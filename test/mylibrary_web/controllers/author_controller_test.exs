@@ -3,6 +3,8 @@ defmodule MylibraryWeb.AuthorControllerTest do
 
   import Mylibrary.AuthorsFixtures
 
+  setup :register_and_log_in_user
+
   @create_attrs %{biography: "some biography", name: "some name"}
   @update_attrs %{biography: "some updated biography", name: "some updated name"}
   @invalid_attrs %{biography: nil, name: nil}

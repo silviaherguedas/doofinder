@@ -3,6 +3,8 @@ defmodule MylibraryWeb.LanguageControllerTest do
 
   import Mylibrary.LanguagesFixtures
 
+  setup :register_and_log_in_user
+  
   @create_attrs %{iso1: "some iso1", iso2: "some iso2", name: "some name"}
   @update_attrs %{iso1: "some updated iso1", iso2: "some updated iso2", name: "some updated name"}
   @invalid_attrs %{iso1: nil, iso2: nil, name: nil}

@@ -3,6 +3,8 @@ defmodule MylibraryWeb.PublisherControllerTest do
 
   import Mylibrary.PublishersFixtures
 
+  setup :register_and_log_in_user
+
   @create_attrs %{name: "some name"}
   @update_attrs %{name: "some updated name"}
   @invalid_attrs %{name: nil}

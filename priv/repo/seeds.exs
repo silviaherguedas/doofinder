@@ -15,3 +15,6 @@ Mylibrary.CSVHelper.column_data("priv/repo/data/authors.csv")
 
 # Seed `publishers` table from CSV
 Mylibrary.CSVHelper.column_data("priv/repo/data/publishers.csv")
+
+# Seed `languages` table from CSV
+Mylibrary.CSVHelper.column_data("priv/repo/data/languages.csv")

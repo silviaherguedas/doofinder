@@ -45,6 +45,9 @@ defmodule Mylibrary.CSVHelper do
       filename == "publishers" ->
         row
         |> publishers_data_seeding()
+      filename == "languages" ->
+        row
+        |> languages_data_seeding()
     end
   end
 
@@ -84,6 +87,27 @@ defmodule Mylibrary.CSVHelper do
 
       publisher ->
         {:ok, publisher}
+    end
+  end
+
+  def languages_data_seeding(row) do
+    alias Mylibrary.{Languages.Language, Repo}
+
+    case Repo.get_by(Language,
+          name: row["name"]
+        ) do
+      nil ->
+        Repo.insert(
+          %Language{}
+          |> Language.changeset(%{
+            name: row["name"],
+            iso1: row["iso1"],
+            iso2: row["iso2"],
+          })
+        )
+
+      language ->
+        {:ok, language}
     end
   end
 end

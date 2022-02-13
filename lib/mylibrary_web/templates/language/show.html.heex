@@ -1,0 +1,23 @@
+<h1>Show Language</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @language.name %>
+  </li>
+
+  <li>
+    <strong>Iso1:</strong>
+    <%= @language.iso1 %>
+  </li>
+
+  <li>
+    <strong>Iso2:</strong>
+    <%= @language.iso2 %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.language_path(@conn, :edit, @language) %></span> |
+<span><%= link "Back", to: Routes.language_path(@conn, :index) %></span>

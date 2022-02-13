@@ -34,4 +34,5 @@ mylibrary-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Plugin VSCode: ElixirLS
 .elixir_ls/

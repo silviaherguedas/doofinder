@@ -1,6 +1,6 @@
 defmodule Mylibrary.Features.Author do
   @moduledoc """
-  Author contains all the data for a particular author
+  Author schema contains all the data for a particular author
   """
   use Ecto.Schema
   import Ecto.Changeset

@@ -1,6 +1,7 @@
 defmodule Mylibrary.Features do
   @moduledoc """
-  The Features context.
+  Features context, encompasses the general characteristics of a book,
+  such as authors, publishers and language.
   """
 
   import Ecto.Query, warn: false

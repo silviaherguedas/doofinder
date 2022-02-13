@@ -1,7 +1,7 @@
 defmodule MylibraryWeb.AuthorControllerTest do
   use MylibraryWeb.ConnCase
 
-  import Mylibrary.FeaturesFixtures
+  import Mylibrary.AuthorsFixtures
 
   @create_attrs %{biography: "some biography", name: "some name"}
   @update_attrs %{biography: "some updated biography", name: "some updated name"}

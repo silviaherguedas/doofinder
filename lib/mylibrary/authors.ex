@@ -1,13 +1,12 @@
-defmodule Mylibrary.Features do
+defmodule Mylibrary.Authors do
   @moduledoc """
-  Features context, encompasses the general characteristics of a book,
-  such as authors, publishers and language.
+  Authors context, encompasses the general characteristics of authors.
   """
 
   import Ecto.Query, warn: false
   alias Mylibrary.Repo
 
-  alias Mylibrary.Features.Author
+  alias Mylibrary.Authors.Author
 
   @doc """
   Returns the list of authors.

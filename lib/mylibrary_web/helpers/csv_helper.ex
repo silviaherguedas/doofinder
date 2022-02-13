@@ -46,7 +46,7 @@ defmodule Mylibrary.CSVHelper do
   end
 
   def author_data_seeding(row) do
-    alias Mylibrary.{Features.Author, Repo}
+    alias Mylibrary.{Authors.Author, Repo}
 
     case Repo.get_by(Author,
           name: row["name"]

@@ -1,7 +1,7 @@
-defmodule Mylibrary.FeaturesFixtures do
+defmodule Mylibrary.AuthorsFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `Mylibrary.Features` context.
+  entities via the `Mylibrary.Authors` context.
   """
 
   @doc """
@@ -14,7 +14,7 @@ defmodule Mylibrary.FeaturesFixtures do
         biography: "some biography",
         name: "some name"
       })
-      |> Mylibrary.Features.create_author()
+      |> Mylibrary.Authors.create_author()
 
     author
   end

@@ -80,6 +80,7 @@ defmodule MylibraryWeb.Router do
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
     resources "/authors", AuthorController
+    resources "/publishers", PublisherController
   end
 
   scope "/", MylibraryWeb do

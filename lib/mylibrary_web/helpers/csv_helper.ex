@@ -42,6 +42,9 @@ defmodule Mylibrary.CSVHelper do
       filename == "authors" ->
         row
         |> author_data_seeding()
+      filename == "publishers" ->
+        row
+        |> publishers_data_seeding()
     end
   end
 
@@ -62,6 +65,25 @@ defmodule Mylibrary.CSVHelper do
 
       author ->
         {:ok, author}
+    end
+  end
+
+  def publishers_data_seeding(row) do
+    alias Mylibrary.{Publishers.Publisher, Repo}
+
+    case Repo.get_by(Publisher,
+          name: row["name"]
+        ) do
+      nil ->
+        Repo.insert(
+          %Publisher{}
+          |> Publisher.changeset(%{
+            name: row["name"],
+          })
+        )
+
+      publisher ->
+        {:ok, publisher}
     end
   end
 end

@@ -1,4 +1,4 @@
-defmodule Mylibrary.CSVHelpers do
+defmodule Mylibrary.CSVHelper do
   @moduledoc """
     Utility module to ingest data ('authors.csv', 'publishers.csv', etc.)
   """

@@ -82,6 +82,7 @@ defmodule MylibraryWeb.Router do
     resources "/authors", AuthorController
     resources "/publishers", PublisherController
     resources "/languages", LanguageController
+    resources "/books", BookController
   end
 
   scope "/", MylibraryWeb do

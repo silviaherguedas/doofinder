@@ -1,0 +1,39 @@
+<.form let={f} for={@changeset} action={@action}>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :title %>
+  <%= text_input f, :title %>
+  <%= error_tag f, :title %>
+
+  <%= label f, :isbn %>
+  <%= text_input f, :isbn %>
+  <%= error_tag f, :isbn %>
+
+  <%= label f, :summary %>
+  <%= textarea f, :summary %>
+  <%= error_tag f, :summary %>
+
+  <%= label f, :binding %>
+  <%= select f, :binding, Ecto.Enum.values(Mylibrary.Catalog.Book, :binding), prompt: "Choose a value" %>
+  <%= error_tag f, :binding %>
+
+  <%= label f, :format %>
+  <%= select f, :format, Ecto.Enum.values(Mylibrary.Catalog.Book, :format), prompt: "Choose a value" %>
+  <%= error_tag f, :format %>
+
+  <%= label f, :year_edition %>
+  <%= number_input f, :year_edition %>
+  <%= error_tag f, :year_edition %>
+
+  <%= label f, :date_publication %>
+  <%= date_select f, :date_publication %>
+  <%= error_tag f, :date_publication %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+</.form>

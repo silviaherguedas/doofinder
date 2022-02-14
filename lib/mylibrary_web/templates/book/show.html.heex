@@ -1,0 +1,43 @@
+<h1>Show Book</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </li>
+
+  <li>
+    <strong>Isbn:</strong>
+    <%= @book.isbn %>
+  </li>
+
+  <li>
+    <strong>Summary:</strong>
+    <%= @book.summary %>
+  </li>
+
+  <li>
+    <strong>Binding:</strong>
+    <%= @book.binding %>
+  </li>
+
+  <li>
+    <strong>Format:</strong>
+    <%= @book.format %>
+  </li>
+
+  <li>
+    <strong>Year edition:</strong>
+    <%= @book.year_edition %>
+  </li>
+
+  <li>
+    <strong>Date publication:</strong>
+    <%= @book.date_publication %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.book_path(@conn, :edit, @book) %></span> |
+<span><%= link "Back", to: Routes.book_path(@conn, :index) %></span>

@@ -8,6 +8,7 @@ defmodule Mylibrary.Authors.Author do
   schema "authors" do
     field :biography, :string
     field :name, :string
+    has_many :book, Mylibrary.Catalog.Book, on_delete: :delete_all
 
     timestamps()
   end

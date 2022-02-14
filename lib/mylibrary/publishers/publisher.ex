@@ -4,6 +4,7 @@ defmodule Mylibrary.Publishers.Publisher do
 
   schema "publishers" do
     field :name, :string
+    has_many :book, Mylibrary.Catalog.Book, on_delete: :nothing
 
     timestamps()
   end

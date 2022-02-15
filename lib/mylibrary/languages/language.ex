@@ -1,12 +1,17 @@
 defmodule Mylibrary.Languages.Language do
+  @moduledoc """
+  Language schema contains all the data for a particular language
+  """
   use Ecto.Schema
   import Ecto.Changeset
+
+  alias Mylibrary.Catalog.Book
 
   schema "languages" do
     field :iso1, :string
     field :iso2, :string
     field :name, :string
-    has_many :book, Mylibrary.Catalog.Book, on_delete: :nilify_all
+    has_many :book, Book, on_delete: :nilify_all
 
     timestamps()
   end

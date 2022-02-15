@@ -35,7 +35,11 @@ defmodule Mylibrary.Authors do
       ** (Ecto.NoResultsError)
 
   """
-  def get_author!(id), do: Repo.get!(Author, id)
+  def get_author!(id) do
+    Author
+    |> Repo.get!(Author, id)
+    #|> Repo.preload(:books)
+  end
 
   @doc """
   Creates a author.

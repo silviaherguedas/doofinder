@@ -48,6 +48,9 @@ defmodule Mylibrary.CSVHelper do
       filename == "languages" ->
         row
         |> languages_data_seeding()
+      filename == "categories" ->
+        row
+        |> categories_data_seeding()
     end
   end
 
@@ -108,6 +111,25 @@ defmodule Mylibrary.CSVHelper do
 
       language ->
         {:ok, language}
+    end
+  end
+
+  def categories_data_seeding(row) do
+    alias Mylibrary.{Catalog.Category, Repo}
+
+    case Repo.get_by(Category,
+          title: row["title"]
+        ) do
+      nil ->
+        Repo.insert(
+          %Category{}
+          |> Category.changeset(%{
+            title: row["title"],
+          })
+        )
+
+      category ->
+        {:ok, category}
     end
   end
 end

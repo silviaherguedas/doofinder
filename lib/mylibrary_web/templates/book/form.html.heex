@@ -9,6 +9,10 @@
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
+  <strong>Categories:</strong>
+  <br>
+  <%= category_select f, @changeset %>
+
   <%= label f, :isbn %>
   <%= text_input f, :isbn %>
   <%= error_tag f, :isbn %>

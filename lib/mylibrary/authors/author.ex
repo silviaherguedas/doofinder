@@ -5,10 +5,12 @@ defmodule Mylibrary.Authors.Author do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Mylibrary.Catalog.Book
+  
   schema "authors" do
     field :biography, :string
     field :name, :string
-    has_many :book, Mylibrary.Catalog.Book, on_delete: :delete_all
+    has_many :book, Book, on_delete: :delete_all
 
     timestamps()
   end

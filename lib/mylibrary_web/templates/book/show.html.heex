@@ -6,6 +6,11 @@
     <strong>Title:</strong>
     <%= @book.title %>
   </li>
+
+  <li>
+    <strong>Isbn:</strong>
+    <%= @book.isbn %>
+  </li>
   
   <li>
     <strong>Categories:</strong>
@@ -14,10 +19,20 @@
       <br>
     <% end %>
   </li>
-
+  
   <li>
-    <strong>Isbn:</strong>
-    <%= @book.isbn %>
+    <strong>Author:</strong>
+    <%= @book.author.name %>
+  </li>
+  
+  <li>
+    <strong>Publisher:</strong>
+    <%= @book.publisher.name %>
+  </li>
+  
+  <li>
+    <strong>Language:</strong>
+    <%= @book.language.name %>
   </li>
 
   <li>

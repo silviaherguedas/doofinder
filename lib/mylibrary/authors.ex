@@ -37,8 +37,8 @@ defmodule Mylibrary.Authors do
   """
   def get_author!(id) do
     Author
-    |> Repo.get!(Author, id)
-    #|> Repo.preload(:books)
+    |> Repo.get!(id)
+    |> Repo.preload(:book)
   end
 
   @doc """

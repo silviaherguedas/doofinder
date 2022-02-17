@@ -35,7 +35,11 @@ defmodule Mylibrary.Languages do
       ** (Ecto.NoResultsError)
 
   """
-  def get_language!(id), do: Repo.get!(Language, id)
+  def get_language!(id) do
+    Language
+    |> Repo.get!(id)
+    |> Repo.preload(:book)
+  end
 
   @doc """
   Creates a language.

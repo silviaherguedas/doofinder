@@ -9,13 +9,25 @@
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
-  <strong>Categories:</strong>
-  <br>
-  <%= category_select f, @changeset %>
-
   <%= label f, :isbn %>
   <%= text_input f, :isbn %>
   <%= error_tag f, :isbn %>
+
+  <%= label f, :categories %>
+  <%= category_select f, @changeset %>
+  <%= error_tag f, :categories %>
+
+  <%= label f, :author %>
+  <%= author_select f, @changeset %>
+  <%= error_tag f, :author %>
+  
+  <%= label f, :publisher %>
+  <%= publisher_select f, @changeset %>
+  <%= error_tag f, :publisher %>
+
+  <%= label f, :language %>
+  <%= language_select f, @changeset %>
+  <%= error_tag f, :language %>
 
   <%= label f, :summary %>
   <%= textarea f, :summary %>

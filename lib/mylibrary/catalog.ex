@@ -5,7 +5,9 @@ defmodule Mylibrary.Catalog do
 
   import Ecto.Query, warn: false
   alias Mylibrary.Repo
-
+  alias Mylibrary.Authors
+  alias Mylibrary.Publishers
+  alias Mylibrary.Languages
   alias Mylibrary.Catalog.Book
   alias Mylibrary.Catalog.Category
 
@@ -38,8 +40,8 @@ defmodule Mylibrary.Catalog do
   """
   def get_book!(id) do
     Book
-    |> Repo.get!(Book, id)
-    #|> Repo.preload(:categories)
+    |> Repo.get!(id)
+    |> Repo.preload([:categories, :author, :publisher, :language])
   end
 
   @doc """
@@ -104,12 +106,16 @@ defmodule Mylibrary.Catalog do
 
   """
   def change_book(%Book{} = book, attrs \\ %{}) do
-    categories = list_categories_by_id(attrs["category_ids"])
-
+    require IEx
+    #IEx.pry()
+    #IO.inspect(book)
     book
-    |> Repo.preload(:categories)
+    |> Repo.preload([:categories, :author, :publisher, :language])
     |> Book.changeset(attrs)
-    |> Ecto.Changeset.put_assoc(:categories, categories)
+    |> Ecto.Changeset.put_assoc(:categories, list_categories_by_id(attrs["category_ids"]))
+    |> Ecto.Changeset.put_assoc(:author, author_by_id(attrs["author_id"]))
+    |> Ecto.Changeset.put_assoc(:publisher, publisher_by_id(attrs["publisher_id"]))
+    |> Ecto.Changeset.put_assoc(:language, language_by_id(attrs["language_id"]))
   end
 
   @doc """
@@ -124,6 +130,48 @@ defmodule Mylibrary.Catalog do
   def list_categories_by_id(nil), do: []
   def list_categories_by_id(category_ids) do
     Repo.all(from c in Category, where: c.id in ^category_ids)
+  end
+
+  @doc """
+  Returns the information of the selected author
+
+  ## Examples
+
+      iex> author_by_id(6)
+      %Author{}
+
+  """
+  def author_by_id(nil), do: []
+  def author_by_id(id) do
+    Authors.get_author!(id)
+  end
+
+  @doc """
+  Returns the information of the selected publisher
+
+  ## Examples
+
+      iex> publisher_by_id(6)
+      %Publisher{}
+
+  """
+  def publisher_by_id(nil), do: []
+  def publisher_by_id(id) do
+    Publishers.get_publisher!(id)
+  end
+
+  @doc """
+  Returns the information of the selected language
+
+  ## Examples
+
+      iex> language_by_id(6)
+      %Language{}
+
+  """
+  def language_by_id(nil), do: []
+  def language_by_id(id) do
+    Languages.get_language!(id)
   end
 
   @doc """

@@ -19,9 +19,9 @@ defmodule Mylibrary.Catalog.Book do
     field :title, :string
     field :year_edition, :integer
 
-    belongs_to :author, Author
-    belongs_to :publisher, Publisher
-    belongs_to :language, Language
+    belongs_to :author, Author, on_replace: :nilify
+    belongs_to :publisher, Publisher, on_replace: :nilify
+    belongs_to :language, Language, on_replace: :nilify
 
     many_to_many :categories, Category, join_through: "book_categories", on_replace: :delete
 

@@ -9,17 +9,17 @@ config :bcrypt_elixir, :log_rounds, 1
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :mylibrary, Mylibrary.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "mylibrary_test#{System.get_env("MIX_TEST_PARTITION")}",
+  username: System.get_env("PGUSER"),
+  password: System.get_env("PGPASSWORD"),
+  hostname: System.get_env("PGHOST"),
+  database: System.get_env("PGDATABASE_TEST"),
   pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: 10
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :mylibrary, MylibraryWeb.Endpoint,
-  http: [ip: {127, 0, 0, 1}, port: 4002],
+  http: [ip: {0, 0, 0, 0}, port: 4002],
   secret_key_base: "btB+1cJA8EJHyxJ48zxyVLn4owc7WbNqExlz0iL4nvn0t8zVrZprGUDjasNpPTis",
   server: false
 

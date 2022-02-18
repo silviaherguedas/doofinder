@@ -1,0 +1,10 @@
+{
+    "name": "my-library",
+    "description": "Application for the management of my personal library",
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com:silviaherguedas/mylibrary.git"
+    },
+    "author": "Silvia M. Herguedas <silviaherguedas@gmail.com> (https://github.com/silviaherguedas/)"
+  }
+  

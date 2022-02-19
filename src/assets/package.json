@@ -1,10 +1,12 @@
 {
     "name": "my-library",
     "description": "Application for the management of my personal library",
+    "license": "MIT",
+    "author": "Silvia M. Herguedas <silviaherguedas@gmail.com> (https://github.com/silviaherguedas/)",
     "repository": {
       "type": "git",
-      "url": "git+ssh://git@github.com:silviaherguedas/mylibrary.git"
+      "url": "git+ssh://git@github.com:silviaherguedas/doofinder.git"
     },
-    "author": "Silvia M. Herguedas <silviaherguedas@gmail.com> (https://github.com/silviaherguedas/)"
+    "main": "app.js"
   }
   

@@ -31,16 +31,40 @@ docker-compose up
 
 ## Other Uses
 
-### To install project dependencies and perform other setup tasks, run
+When building the container, an alias "mix" is created to facilitate the execution of Elixir commands, so that "mix" can be invoked directly to execute commands inside the container:
 
 ```bash
-docker-compose run --rm phoenix mix setup
+alias mix="docker-compose run --rm phoenix mix"
 ```
 
-### To launch the migrations and populate the database with real data, run
+### To install project dependencies and perform other setup tasks
 
 ```bash
+# Without alias
+docker-compose run --rm phoenix mix setup
+
+# With alias
+mix setup
+```
+
+### To launch the migrations and populate the database with real data
+
+```bash
+# Without alias
 docker-compose run --rm phoenix mix ecto.setup
+
+# With alias
+mix ecto.setup
+```
+
+### To run the tests, issue the following command
+
+```bash
+# Without alias
+docker-compose run --rm -e MIX_ENV=test phoenix mix test
+
+# With alias
+MIX_ENV=test mix test
 ```
 
 ### To enter the container console, run
@@ -59,12 +83,6 @@ docker-compose restart
 
 ```bash
 psql -U postgres
-```
-
-### To run the tests, issue the following command
-
-```bash
-docker-compose run --rm -e MIX_ENV=test phoenix mix test
 ```
 
 ## Learn more

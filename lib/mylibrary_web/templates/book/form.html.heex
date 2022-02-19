@@ -46,7 +46,7 @@
   <%= error_tag f, :year_edition %>
 
   <%= label f, :date_publication %>
-  <%= date_select f, :date_publication %>
+  <%= date_select f, :date_publication, year: [options: 1800..get_current_year()] %>
   <%= error_tag f, :date_publication %>
 
   <div>

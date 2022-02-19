@@ -32,24 +32,28 @@ defmodule Mylibrary.Catalog.Book do
   def changeset(book, attrs) do
     book
     |> cast(attrs, [:title, :isbn, :summary, :binding, :format, :year_edition, :date_publication])
-    |> validate_required([:title,])# :author_id, :publisher_id, :language_id
+    |> validate_required([:title, :binding, :format])
     |> validate_isbn()
     |> validate_year_edition()
   end
 
   defp validate_isbn(changeset) do
+    format_message = "digits only and with these formats: [ xxx-x-xxxxx-xxx-x (17) | x-xxxxx-xxx-x (13) | xxxxxxxxxx (10) | xxxxxxxxxxxxx (13) ]"
+
     changeset
     |> validate_required([:isbn])
-    |> validate_format(:isbn, ~r/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/, message: "allowed formats: [ xxx-x-xxxxx-xxx-x | x-xxxxx-xxx-x | xxxxxxxxxx | xxxxxxxxxxxxx ]")
-    |> validate_length(:isbn, min: 10, max: 17, message: "must have a minimum length of 10 or 13 digits and a maximum of 17 digits.")
+    |> validate_format(:isbn, ~r/^(?=(?:\d\D*){10}(?:(?:\D*\d){3})?$)[\d-]+$/, message: format_message)
+    |> validate_length(:isbn, min: 10, max: 17, message: "must have a minimum length of 10 and a maximum of 17 digits.")
     |> unsafe_validate_unique(:isbn, Mylibrary.Repo)
     |> unique_constraint(:isbn)
   end
 
   defp validate_year_edition(changeset) do
+    datetime = DateTime.now!("Etc/UTC")
+    year = datetime.year
+
     changeset
     |> validate_required([:year_edition])
-    #|> validate_format(:year_edition, ~r/\d{4}/, message: "allowed format: [ 0000 ]")
-    #|> validate_length(:year_edition, is: 4, message: "only 4 digits are allowed")
+    |> validate_inclusion(:year_edition, 1800..year,  message: "Years between 1800 and #{year}")
   end
 end

@@ -45,4 +45,9 @@ defmodule MylibraryWeb.BookView do
 
     select(f, :language_id, language_opts, prompt: "Choose a option")
   end
+
+  def get_current_year() do
+    datetime = DateTime.now!("Etc/UTC")
+    datetime.year
+  end
 end

@@ -4,12 +4,12 @@ services:
   phoenix:
     build: "."
     env_file:
-      - ./src/.env
+      - .env
     environment:
       MIX_ENV: dev
     restart: always
     volumes:
-      - ./src:/app
+      - ./:/app
     ports:
       - "4020:4020"
     depends_on:

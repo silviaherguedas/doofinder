@@ -6,10 +6,12 @@ defmodule Mylibrary.Catalog do
   import Ecto.Query, warn: false
   alias Mylibrary.Repo
   alias Mylibrary.Authors
+  alias Mylibrary.Authors.Author
   alias Mylibrary.Publishers
+  alias Mylibrary.Publishers.Publisher
   alias Mylibrary.Languages
-  alias Mylibrary.Catalog.Book
-  alias Mylibrary.Catalog.Category
+  alias Mylibrary.Languages.Language
+  alias Mylibrary.Catalog.{Book, Category}
 
   @doc """
   Returns the list of books.
@@ -59,6 +61,10 @@ defmodule Mylibrary.Catalog do
   def create_book(attrs \\ %{}) do
     %Book{}
     |> change_book(attrs)
+    |> Ecto.Changeset.cast_assoc(:categories, required: true, with: {Category, :changeset, attrs})
+    |> Ecto.Changeset.cast_assoc(:author, required: true, with: {Author, :changeset, attrs})
+    |> Ecto.Changeset.cast_assoc(:publisher, required: true, with: {Publisher, :changeset, attrs})
+    |> Ecto.Changeset.cast_assoc(:language, required: true, with: {Language, :changeset, attrs})
     |> Repo.insert()
   end
 
@@ -77,6 +83,10 @@ defmodule Mylibrary.Catalog do
   def update_book(%Book{} = book, attrs) do
     book
     |> change_book(attrs)
+    |> Ecto.Changeset.put_assoc(:categories, list_categories_by_id(attrs["category_ids"]))
+    |> Ecto.Changeset.put_assoc(:author, author_by_id(attrs["author_id"]))
+    |> Ecto.Changeset.put_assoc(:publisher, publisher_by_id(attrs["publisher_id"]))
+    |> Ecto.Changeset.put_assoc(:language, language_by_id(attrs["language_id"]))
     |> Repo.update()
   end
 
@@ -106,16 +116,9 @@ defmodule Mylibrary.Catalog do
 
   """
   def change_book(%Book{} = book, attrs \\ %{}) do
-    require IEx
-    #IEx.pry()
-    #IO.inspect(book)
     book
     |> Repo.preload([:categories, :author, :publisher, :language])
     |> Book.changeset(attrs)
-    |> Ecto.Changeset.put_assoc(:categories, list_categories_by_id(attrs["category_ids"]))
-    |> Ecto.Changeset.put_assoc(:author, author_by_id(attrs["author_id"]))
-    |> Ecto.Changeset.put_assoc(:publisher, publisher_by_id(attrs["publisher_id"]))
-    |> Ecto.Changeset.put_assoc(:language, language_by_id(attrs["language_id"]))
   end
 
   @doc """

@@ -10,7 +10,7 @@ with [Phoenix](http://phoenixframework.org) web framework using and
 
 ### To start the container and bring up Phoenix server
 
-* Create the .env file in the src folder. To do this, rename the file /src/.env.dist
+* Create the .env file in the src folder. To do this, rename the file .env.dist
 
 * To build the container the first time and install all the dependencies,
 create the database and run the migrations with the real data load,
@@ -18,6 +18,11 @@ we must launch this script:
 
 ```bash
 ./docker_up.sh
+
+docker exec -ti doofinder_phoenix_1 bash
+
+sudo chown -R 1000:1000 _build/
+sudo chown -R 1000:1000 deps/
 ```
 
 * The subsequent times, it would be enough to launch only this command

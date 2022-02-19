@@ -4,6 +4,6 @@
 docker-compose build
 alias mix="docker-compose run --rm phoenix mix"
 cd src/
-mix setup
+docker-compose run --rm phoenix mix setup
 cd ..
 docker-compose up

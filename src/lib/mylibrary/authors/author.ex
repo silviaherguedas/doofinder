@@ -6,11 +6,11 @@ defmodule Mylibrary.Authors.Author do
   import Ecto.Changeset
 
   alias Mylibrary.Catalog.Book
-  
+
   schema "authors" do
     field :biography, :string
     field :name, :string
-    has_many :book, Book, on_delete: :delete_all
+    has_many :books, Book, on_delete: :delete_all
 
     timestamps()
   end
@@ -19,6 +19,7 @@ defmodule Mylibrary.Authors.Author do
   def changeset(author, attrs) do
     author
     |> cast(attrs, [:name, :biography])
-    |> validate_required([:name, :biography])
+    |> validate_required([:name])
+    |> unique_constraint(:name)
   end
 end

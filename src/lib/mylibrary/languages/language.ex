@@ -11,7 +11,7 @@ defmodule Mylibrary.Languages.Language do
     field :iso1, :string
     field :iso2, :string
     field :name, :string
-    has_many :book, Book, on_delete: :nilify_all
+    has_many :books, Book, on_delete: :nilify_all
 
     timestamps()
   end
@@ -20,8 +20,9 @@ defmodule Mylibrary.Languages.Language do
   def changeset(language, attrs) do
     language
     |> cast(attrs, [:name, :iso1, :iso2])
-    |> validate_required([:name, :iso1])
+    |> validate_required([:name, :iso1, :iso2])
     |> validate_length(:iso1, is: 2, message: "only 2 digits allowed")
     |> validate_length(:iso2, is: 3, message: "only 3 digits allowed")
+    |> unique_constraint([:iso1, :iso2])
   end
 end

@@ -38,7 +38,7 @@ defmodule Mylibrary.Languages do
   def get_language!(id) do
     Language
     |> Repo.get!(id)
-    |> Repo.preload(:book)
+    |> Repo.preload(:books)
   end
 
   @doc """

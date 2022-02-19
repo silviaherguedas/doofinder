@@ -9,7 +9,7 @@ defmodule Mylibrary.Publishers.Publisher do
 
   schema "publishers" do
     field :name, :string
-    has_many :book, Book, on_delete: :nothing
+    has_many :books, Book, on_delete: :nothing
 
     timestamps()
   end
@@ -19,5 +19,6 @@ defmodule Mylibrary.Publishers.Publisher do
     publisher
     |> cast(attrs, [:name])
     |> validate_required([:name])
+    |> unique_constraint(:name)
   end
 end

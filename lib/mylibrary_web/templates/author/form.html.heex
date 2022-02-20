@@ -5,15 +5,13 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
+  <%= label f, :name, class: "form-label" %>
+  <%= text_input f, :name, class: "form-control mb-4" %>
+  <%= error_tag f, :name  %>
 
-  <%= label f, :biography %>
-  <%= textarea f, :biography %>
+  <%= label f, :biography, class: "form-label" %>
+  <%= textarea f, :biography, class: "form-control mb-4" %>
   <%= error_tag f, :biography %>
 
-  <div>
-    <%= submit "Save" %>
-  </div>
+<%= submit "Save", class: "btn btn-success btn-summit" %>
 </.form>

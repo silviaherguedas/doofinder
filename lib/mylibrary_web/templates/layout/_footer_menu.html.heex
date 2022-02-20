@@ -1,11 +1,33 @@
-<footer>
-    <section class="container">
-      <nav>
-        <ul>
-          <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-            <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-          <% end %>
+<div class="container-fluic footer-container mt-2 bg-light">
+    <footer class="py-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <%= if @current_user do %>
+            <li class="nav-item">
+                <%= link "Books", to: Routes.book_path(@conn, :index), class: "nav-link text-muted"%>
+            </li>
+            <li class="nav-item">
+                <%= link "Categories", to: Routes.category_path(@conn, :index), class: "nav-link text-muted" %>
+            </li>
+            <li class="nav-item">
+                <%= link "Authors", to: Routes.author_path(@conn, :index), class: "nav-link text-muted" %>
+            </li>
+            <li class="nav-item">
+                <%= link "Publishers", to: Routes.publisher_path(@conn, :index), class: "nav-link text-muted" %>
+            </li>
+            <li class="nav-item">
+                <%= link "Languages", to: Routes.language_path(@conn, :index), class: "nav-link text-muted" %>
+            </li>
+        <% end %>
+        <%= if (@current_user) && (function_exported?(Routes, :live_dashboard_path, 2)) do %>
+            <li class="nav-item"> <span class="nav-link text-muted">|</span> </li>
+        <% end %>
+        <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+            <li class="nav-item">
+                <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home), class: "nav-link text-muted" %>
+            </li>
+        <%= end %>
+
         </ul>
-      </nav>
-    </section>
-</footer>
+        <p class="text-center text-muted">© 2022 Silvia Herguedas, Inc</p>
+    </footer>
+</div>

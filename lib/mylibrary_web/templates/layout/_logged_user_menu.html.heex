@@ -1,0 +1,15 @@
+<ul class="navbar-nav mb-2 mb-lg-0">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="user-details-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= @current_user.email %>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="user-details-dropdown">
+            <li><%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "dropdown-item" %></li>
+            <li><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "dropdown-item" %></li>
+        </ul>
+    </li>
+</ul>
+
+
+
+

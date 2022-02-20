@@ -1,15 +1,22 @@
-<h1>Forgot your password?</h1>
+<section class="container-fluid px-0">
+    <div class="row py-lg-5 text-center ">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Forgot your password?</h1>
+        </div>
+    </div>
+</section>
 
+<section class="container-fluid col-6">
 <.form let={f} for={:user} action={Routes.user_reset_password_path(@conn, :create)}>
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= label f, :email, class: "form-label" %>
+  <%= email_input f, :email, required: true, class: "form-control" %>
 
-  <div>
-    <%= submit "Send instructions to reset password" %>
+    <div class="col mt-4">
+    <%= submit "Send instructions to reset password", class: "btn btn-success" %>
+    <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-link" %>
+    <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-link" %>
   </div>
 </.form>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
-</p>
+</section>
+

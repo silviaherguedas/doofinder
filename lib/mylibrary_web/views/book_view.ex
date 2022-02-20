@@ -13,7 +13,7 @@ defmodule MylibraryWeb.BookView do
       for cat <- Catalog.list_categories(),
           do: [key: cat.title, value: cat.id, selected: cat.id in existing_ids]
 
-    multiple_select(f, :category_ids, category_opts)
+    multiple_select(f, :category_ids, category_opts, class: "form-control")
   end
 
   def author_select(f, changeset) do
@@ -23,7 +23,7 @@ defmodule MylibraryWeb.BookView do
       for aut <- Authors.list_authors(),
           do: [key: aut.name, value: aut.id, selected: aut.id in existing_ids]
 
-    select(f, :author_id, author_opts, prompt: "Choose a option")
+    select(f, :author_id, author_opts, prompt: "Choose a option", class: "form-control")
   end
 
   def publisher_select(f, changeset) do
@@ -33,7 +33,7 @@ defmodule MylibraryWeb.BookView do
       for pub <- Publishers.list_publishers(),
           do: [key: pub.name, value: pub.id, selected: pub.id in existing_ids]
 
-    select(f, :publisher_id, publisher_opts, prompt: "Choose a option")
+    select(f, :publisher_id, publisher_opts, prompt: "Choose a option", class: "form-control")
   end
 
   def language_select(f, changeset) do
@@ -43,7 +43,7 @@ defmodule MylibraryWeb.BookView do
       for lan <- Languages.list_languages(),
           do: [key: lan.name, value: lan.id, selected: lan.id in existing_ids]
 
-    select(f, :language_id, language_opts, prompt: "Choose a option")
+    select(f, :language_id, language_opts, prompt: "Choose a option", class: "form-control")
   end
 
   def get_current_year() do

@@ -5,51 +5,52 @@
     </div>
   <% end %>
 
-  <%= label f, :title %>
-  <%= text_input f, :title %>
+  <%= label f, :title, class: "form-label"%>
+  <%= text_input f, :title, class: "form-control"%>
   <%= error_tag f, :title %>
 
-  <%= label f, :isbn %>
-  <%= text_input f, :isbn %>
+  <%= label f, :isbn, class: "form-label"%>
+  <%= text_input f, :isbn, class: "form-control"%>
   <%= error_tag f, :isbn %>
 
-  <%= label f, :categories %>
+  <%= label f, :categories, class: "form-label"%>
   <%= category_select f, @changeset %>
   <%= error_tag f, :categories %>
 
-  <%= label f, :author %>
+  <%= label f, :author, class: "form-label"%>
   <%= author_select f, @changeset %>
   <%= error_tag f, :author %>
-  
-  <%= label f, :publisher %>
+
+  <%= label f, :publisher, class: "form-label"%>
   <%= publisher_select f, @changeset %>
   <%= error_tag f, :publisher %>
 
-  <%= label f, :language %>
+  <%= label f, :language, class: "form-label"%>
   <%= language_select f, @changeset %>
   <%= error_tag f, :language %>
 
-  <%= label f, :summary %>
-  <%= textarea f, :summary %>
+  <%= label f, :summary, class: "form-label"%>
+  <%= textarea f, :summary, class: "form-control" %>
   <%= error_tag f, :summary %>
 
-  <%= label f, :binding %>
-  <%= select f, :binding, Ecto.Enum.values(Mylibrary.Catalog.Book, :binding), prompt: "Choose a value" %>
+  <%= label f, :binding, class: "form-label"%>
+  <%= select f, :binding, Ecto.Enum.values(Mylibrary.Catalog.Book, :binding), prompt: "Choose a value", class: "form-select" %>
   <%= error_tag f, :binding %>
 
-  <%= label f, :format %>
-  <%= select f, :format, Ecto.Enum.values(Mylibrary.Catalog.Book, :format), prompt: "Choose a value" %>
+  <%= label f, :format, class: "form-label"%>
+  <%= select f, :format, Ecto.Enum.values(Mylibrary.Catalog.Book, :format), prompt: "Choose a value", class: "form-select" %>
   <%= error_tag f, :format %>
 
-  <%= label f, :year_edition %>
-  <%= number_input f, :year_edition %>
+  <%= label f, :year_edition, class: "form-label"%>
+  <%= number_input f, :year_edition, class: "form-control" %>
   <%= error_tag f, :year_edition %>
 
-  <%= label f, :date_publication %>
-  <%= date_select f, :date_publication, year: [options: get_current_year()..1800] %>
+  <%= label f, :date_publication, class: "form-label"%>
+<div class="d-flex gap-2">
+  <%= date_select f, :date_publication,  day: [class: "form-select date-picker"], month: [class: "form-select date-picker"], year: [options: get_current_year()..1800, class: "form-select date-picker"] %>
   <%= error_tag f, :date_publication %>
-
-  <div>
-    <%= submit "Save" %>
+</div>
+  <div class="mt-3">
+   <%= submit "Save", class: "btn btn-success" %>
   </div>
 </.form>

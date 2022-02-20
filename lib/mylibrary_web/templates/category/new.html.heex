@@ -1,5 +1,11 @@
-<h1>New Category</h1>
-
+<section class="container-fluid px-0">
+    <div class="row py-lg-5 text-center ">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">New Category</h1>
+        </div>
+    </div>
+    <%= link to: Routes.category_path(@conn, :index), class: "btn btn-outline-primary mb-4 text-left"  do %>
+    <i class="bi bi-arrow-left"/> Back
+    <% end %>
+</section>
 <%= render "form.html", Map.put(assigns, :action, Routes.category_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.category_path(@conn, :index) %></span>

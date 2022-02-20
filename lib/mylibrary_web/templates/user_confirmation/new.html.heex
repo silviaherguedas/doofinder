@@ -1,15 +1,14 @@
 <h1>Resend confirmation instructions</h1>
 
 <.form let={f} for={:user} action={Routes.user_confirmation_path(@conn, :create)}>
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= label f, :email, class: "form-label" %>
+  <%= email_input f, :email, required: true, class: "form-control" %>
 
-  <div>
-    <%= submit "Resend confirmation instructions" %>
+<div class="col mt-4">
+    <%= submit "Resend confirmation instructions", class: "btn btn-success" %>
+    <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-link" %>
+    <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-link" %>
   </div>
 </.form>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
-</p>
+

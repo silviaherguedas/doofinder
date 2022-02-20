@@ -1,4 +1,10 @@
-<h1>Reset password</h1>
+<section class="container-fluid px-0">
+<div class="row py-lg-5 text-center ">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Reset password</h1>
+    </div>
+</div>
+</section>
 
 <.form let={f} for={@changeset} action={Routes.user_reset_password_path(@conn, :update, @token)}>
   <%= if @changeset.action do %>
@@ -7,20 +13,18 @@
     </div>
   <% end %>
 
-  <%= label f, :password, "New password" %>
-  <%= password_input f, :password, required: true %>
+  <%= label f, :password, "New password", class: "form-label"  %>
+  <%= password_input f, :password, required: true, class: "form-control"  %>
   <%= error_tag f, :password %>
 
-  <%= label f, :password_confirmation, "Confirm new password" %>
-  <%= password_input f, :password_confirmation, required: true %>
+  <%= label f, :password_confirmation, "Confirm new password", class: "form-label"  %>
+  <%= password_input f, :password_confirmation, required: true, class: "form-control"  %>
   <%= error_tag f, :password_confirmation %>
 
-  <div>
-    <%= submit "Reset password" %>
+    <div class="col mt-4">
+        <%= submit "Reset password", class: "btn btn-success" %>
+        <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-link" %>
+        <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-link" %>
   </div>
 </.form>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
-</p>

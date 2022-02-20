@@ -1,4 +1,12 @@
-<h1>Log in</h1>
+<section class="container-fluid px-0">
+    <div class="row py-lg-5 text-center ">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Log in</h1>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid col-5">
 
 <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
   <%= if @error_message do %>
@@ -7,21 +15,25 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+    <div class="form-floating">
+      <%= email_input f, :email, required: true, class: "form-control", id: "floatingEmail", placeholder: "name@example.com" %>
+      <%= label f, :email, for: "floatingEmail"%>
+    </div>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-
-  <%= label f, :remember_me, "Keep me logged in for 60 days" %>
-  <%= checkbox f, :remember_me %>
-
-  <div>
-    <%= submit "Log in" %>
-  </div>
+    <div class="form-floating">
+      <%= password_input f, :password, required: true, class: "form-control", id: "floatingPwd", placeholder: "password"  %>
+      <%= label f, :password, for: "floatingPwd" %>
+    </div>
+    <div class="checkbox my-3">
+      <%= checkbox f, :remember_me %>
+      <%= label f, :remember_me, "Keep me logged in for 60 days" %>
+    </div>
+     <div class="col">
+        <%= submit "Log in", class: "btn btn-success" %>
+        <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-link" %>
+        <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-link" %>
+     </div>
 </.form>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+</section>
+

@@ -6,11 +6,8 @@ defmodule Mylibrary.Catalog do
   import Ecto.Query, warn: false
   alias Mylibrary.Repo
   alias Mylibrary.Authors
-  alias Mylibrary.Authors.Author
   alias Mylibrary.Publishers
-  alias Mylibrary.Publishers.Publisher
   alias Mylibrary.Languages
-  alias Mylibrary.Languages.Language
   alias Mylibrary.Catalog.{Book, Category}
 
   @doc """
@@ -61,10 +58,10 @@ defmodule Mylibrary.Catalog do
   def create_book(attrs \\ %{}) do
     %Book{}
     |> change_book(attrs)
-    |> Ecto.Changeset.cast_assoc(:categories, required: true, with: {Category, :changeset, attrs})
-    |> Ecto.Changeset.cast_assoc(:author, required: true, with: {Author, :changeset, attrs})
-    |> Ecto.Changeset.cast_assoc(:publisher, required: true, with: {Publisher, :changeset, attrs})
-    |> Ecto.Changeset.cast_assoc(:language, required: true, with: {Language, :changeset, attrs})
+    |> Ecto.Changeset.cast_assoc(:categories, required: true)
+    |> Ecto.Changeset.cast_assoc(:author, required: true)
+    |> Ecto.Changeset.cast_assoc(:publisher, required: true)
+    |> Ecto.Changeset.cast_assoc(:language, required: true)
     |> Repo.insert()
   end
 
@@ -83,10 +80,6 @@ defmodule Mylibrary.Catalog do
   def update_book(%Book{} = book, attrs) do
     book
     |> change_book(attrs)
-    |> Ecto.Changeset.put_assoc(:categories, list_categories_by_id(attrs["category_ids"]))
-    |> Ecto.Changeset.put_assoc(:author, author_by_id(attrs["author_id"]))
-    |> Ecto.Changeset.put_assoc(:publisher, publisher_by_id(attrs["publisher_id"]))
-    |> Ecto.Changeset.put_assoc(:language, language_by_id(attrs["language_id"]))
     |> Repo.update()
   end
 
@@ -119,6 +112,10 @@ defmodule Mylibrary.Catalog do
     book
     |> Repo.preload([:categories, :author, :publisher, :language])
     |> Book.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:categories, list_categories_by_id(attrs["category_ids"]))
+    |> Ecto.Changeset.put_assoc(:author, author_by_id(attrs["author_id"]))
+    |> Ecto.Changeset.put_assoc(:publisher, publisher_by_id(attrs["publisher_id"]))
+    |> Ecto.Changeset.put_assoc(:language, language_by_id(attrs["language_id"]))
   end
 
   @doc """
@@ -146,7 +143,9 @@ defmodule Mylibrary.Catalog do
   """
   def author_by_id(nil), do: []
   def author_by_id(id) do
-    Authors.get_author!(id)
+    if id != "" do
+      Authors.get_author!(id)
+    end
   end
 
   @doc """
@@ -160,7 +159,9 @@ defmodule Mylibrary.Catalog do
   """
   def publisher_by_id(nil), do: []
   def publisher_by_id(id) do
-    Publishers.get_publisher!(id)
+    if id != "" do
+      Publishers.get_publisher!(id)
+    end
   end
 
   @doc """
@@ -174,7 +175,9 @@ defmodule Mylibrary.Catalog do
   """
   def language_by_id(nil), do: []
   def language_by_id(id) do
-    Languages.get_language!(id)
+    if id != "" do
+      Languages.get_language!(id)
+    end
   end
 
   @doc """

@@ -15,7 +15,9 @@ with [Phoenix](http://phoenixframework.org) web framework using and
 * Follow these steps:
 
 ```bash
-# 1. To build the container the first time and install all the dependencies, create the database and run the migrations with the real data load, we must launch this script:
+# 1. To build the container the first time and install all the dependencies,
+# create the database and run the migrations with the real data load,
+# we must launch this script:
 ./docker_up.sh
 
 # 2. Access the container, from the console

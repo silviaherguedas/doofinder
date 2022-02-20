@@ -10,39 +10,40 @@ with [Phoenix](http://phoenixframework.org) web framework using and
 
 ### To start the container and bring up Phoenix server
 
-* Create the .env file in the src folder. To do this, rename the file .env.dist
-
-* Follow these steps:
+1. Create the .env file. To do this, rename the file .env.dist
+2. Follow these steps:
 
 ```bash
-# 1. To build the container the first time and install all the dependencies,
+# a. To build the container the first time and install all the dependencies,
 # create the database and run the migrations with the real data load,
 # we must launch this script:
 ./docker_up.sh
 
-# 2. Access the container, from the console
+# b. Access the container, from the console
 docker exec -ti doofinder_phoenix_1 bash
 
-# 2.1. Assign permissions for the local user
+# b.1. Assign permissions for the local user
 chown -R $(id -u):$(id -g) _build/
 chown -R $(id -u):$(id -g) deps/
 
-# 2.2. Install Npm dependencies
+# b.2. Install Npm dependencies
 cd assets
 npm install
 
-# 2.3 Run frontend build, compile, and digest assets
+# b.3 Run frontend build, compile, and digest assets
+cd ../
 mix do compile, phx.digest
 ```
 
-* The subsequent times, it would be enough to launch only this command
+3. Now, you can visit [`localhost:4020`](http://localhost:4020) from your browser.
+4. To access the tool, you need to register on the platform.
+
+The subsequent times, it would be enough to launch only this command
 in the root folder:
 
 ```bash
 docker-compose up
 ```
-
-* Now, you can visit [`localhost:4020`](http://localhost:4020) from your browser.
 
 ## Other Uses
 

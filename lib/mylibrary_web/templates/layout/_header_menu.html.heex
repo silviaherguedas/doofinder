@@ -1,13 +1,15 @@
 <header>
     <section class="container">
         <nav>
-            <ul>
-                <li><%= link "Books", to: Routes.book_path(@conn, :index) %></li>
-                <li><%= link "Categories", to: Routes.category_path(@conn, :index) %></li>
-                <li><%= link "Authors", to: Routes.author_path(@conn, :index) %></li>
-                <li><%= link "Publishers", to: Routes.publisher_path(@conn, :index) %></li>
-                <li><%= link "Languages", to: Routes.language_path(@conn, :index) %></li>
-            </ul>
+            <%= if @current_user do %>
+                <ul>
+                    <li><%= link "Books", to: Routes.book_path(@conn, :index) %></li>
+                    <li><%= link "Categories", to: Routes.category_path(@conn, :index) %></li>
+                    <li><%= link "Authors", to: Routes.author_path(@conn, :index) %></li>
+                    <li><%= link "Publishers", to: Routes.publisher_path(@conn, :index) %></li>
+                    <li><%= link "Languages", to: Routes.language_path(@conn, :index) %></li>
+                </ul>
+            <% end %>
             <%= render "_user_menu.html", assigns %>
         </nav>
         <a href="https://localhost:4000/" class="phx-logo">

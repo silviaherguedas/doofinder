@@ -78,6 +78,12 @@ MIX_ENV=test mix test
 docker exec -ti doofinder_phoenix_1 bash
 ```
 
+### To stop and delete the container
+
+```bash
+docker-compose down
+```
+
 ### To restart the container, run
 
 ```bash

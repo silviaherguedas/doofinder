@@ -4,9 +4,11 @@
     "license": "MIT",
     "author": "Silvia M. Herguedas <silviaherguedas@gmail.com> (https://github.com/silviaherguedas/)",
     "repository": {
-      "type": "git",
-      "url": "git+ssh://git@github.com:silviaherguedas/doofinder.git"
+        "type": "git",
+        "url": "git+ssh://git@github.com:silviaherguedas/doofinder.git"
     },
-    "main": "app.js"
-  }
-  
+    "main": "app.js",
+    "dependencies": {
+        "bootstrap": "^5.1.3"
+    }
+}

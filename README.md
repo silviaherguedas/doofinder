@@ -23,14 +23,15 @@ with [Phoenix](http://phoenixframework.org) web framework using and
 # 2. Access the container, from the console
 docker exec -ti doofinder_phoenix_1 bash
 
-# 3. Assign permissions for the local user
+# 2.1. Assign permissions for the local user
 chown -R $(id -u):$(id -g) _build/
 chown -R $(id -u):$(id -g) deps/
 
-# 3. Install Npm dependencies
+# 2.2. Install Npm dependencies
 cd assets
 npm install
-# Run frontend build, compile, and digest assets
+
+# 2.3 Run frontend build, compile, and digest assets
 mix do compile, phx.digest
 ```
 

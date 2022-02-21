@@ -56,6 +56,6 @@ defmodule Mylibrary.Catalog.Book do
 
     changeset
     |> validate_required([:year_edition])
-    |> validate_inclusion(:year_edition, @min_year..year,  message: "Years between @min_year and #{year}")
+    |> validate_inclusion(:year_edition, @min_year..year,  message: "Years between #{@min_year} and #{year}")
   end
 end

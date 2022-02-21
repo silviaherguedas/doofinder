@@ -58,10 +58,7 @@ defmodule Mylibrary.Catalog do
   def create_book(attrs \\ %{}) do
     %Book{}
     |> change_book(attrs)
-    |> Ecto.Changeset.cast_assoc(:categories, required: true)
-    |> Ecto.Changeset.cast_assoc(:author, required: true)
-    |> Ecto.Changeset.cast_assoc(:publisher, required: true)
-    |> Ecto.Changeset.cast_assoc(:language, required: true)
+    |> assign_mandatory_relations()
     |> Repo.insert()
   end
 
@@ -80,6 +77,7 @@ defmodule Mylibrary.Catalog do
   def update_book(%Book{} = book, attrs) do
     book
     |> change_book(attrs)
+    |> assign_mandatory_relations()
     |> Repo.update()
   end
 
@@ -116,6 +114,23 @@ defmodule Mylibrary.Catalog do
     |> Ecto.Changeset.put_assoc(:author, author_by_id(attrs["author_id"]))
     |> Ecto.Changeset.put_assoc(:publisher, publisher_by_id(attrs["publisher_id"]))
     |> Ecto.Changeset.put_assoc(:language, language_by_id(attrs["language_id"]))
+  end
+
+  @doc """
+  Assigning mandatory status to external relations.
+
+  ## Examples
+
+      iex> assign_mandatory_relations(%{field: value})
+      %Ecto.Changeset{}
+
+  """
+  def assign_mandatory_relations(book) do
+    book
+    |> Ecto.Changeset.cast_assoc(:categories, required: true)
+    |> Ecto.Changeset.cast_assoc(:author, required: true)
+    |> Ecto.Changeset.cast_assoc(:publisher, required: true)
+    |> Ecto.Changeset.cast_assoc(:language, required: true)
   end
 
   @doc """

@@ -5,7 +5,7 @@
             <p class="lead text-muted">Here are the available languages</p>
             <%= link to: Routes.language_path(@conn, :new), class: "btn btn-success" do %>
                <i class="bi bi-plus" aria-hidden="true"/>New Language
-            <%= end %>
+            <% end %>
         </div>
     </div>
 </section>
@@ -36,7 +36,7 @@
                         <li class="action-list-item">
                             <%= link to: Routes.language_path(@conn, :edit, language), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
                                 <i class="bi bi-pencil-fill" aria-hidden="true"/>
-                            <%end %>
+                            <% end %>
                         </li>
                         <li class="action-list-item">
                             <%= link to: Routes.language_path(@conn, :delete, language), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
@@ -46,7 +46,7 @@
                     </ul>
                 </td>
             </tr>
-            <%= end %>
+            <% end %>
             </tbody>
         </table>
 </div>

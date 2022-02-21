@@ -4,8 +4,8 @@
             <h1 class="fw-light">Listing Publisher</h1>
             <p class="lead text-muted">Here are the available publishers</p>
             <%= link to: Routes.publisher_path(@conn, :new), class: "btn btn-success" do %>
-            <i class="bi bi-plus" aria-hidden="true"/>New publisher
-            <%= end %>
+              <i class="bi bi-plus" aria-hidden="true"/>New publisher
+            <% end %>
         </div>
     </div>
 </section>
@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for publisher <- @publishers do %>
+  <%= for publisher <- @publishers do %>
     <tr>
       <td><%= publisher.name %></td>
         <td>
@@ -42,7 +42,7 @@
             </ul>
         </td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>
 </div>

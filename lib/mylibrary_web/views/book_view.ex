@@ -1,6 +1,8 @@
 defmodule MylibraryWeb.BookView do
   use MylibraryWeb, :view
 
+  @min_year 1800
+
   alias Mylibrary.Catalog
   alias Mylibrary.Authors
   alias Mylibrary.Publishers
@@ -50,4 +52,6 @@ defmodule MylibraryWeb.BookView do
     datetime = DateTime.now!("Etc/UTC")
     datetime.year
   end
+
+  def get_min_year(), do: @min_year
 end

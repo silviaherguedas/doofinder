@@ -5,6 +5,8 @@ defmodule Mylibrary.Catalog.Book do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @min_year 1800
+
   alias Mylibrary.Authors.Author
   alias Mylibrary.Publishers.Publisher
   alias Mylibrary.Languages.Language
@@ -54,6 +56,6 @@ defmodule Mylibrary.Catalog.Book do
 
     changeset
     |> validate_required([:year_edition])
-    |> validate_inclusion(:year_edition, 1800..year,  message: "Years between 1800 and #{year}")
+    |> validate_inclusion(:year_edition, @min_year..year,  message: "Years between @min_year and #{year}")
   end
 end

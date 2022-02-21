@@ -26,11 +26,6 @@ defmodule MylibraryWeb.CategoryController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    category = Catalog.get_category!(id)
-    render(conn, "show.html", category: category)
-  end
-
   def edit(conn, %{"id" => id}) do
     category = Catalog.get_category!(id)
     changeset = Catalog.change_category(category)

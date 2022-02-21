@@ -26,11 +26,6 @@ defmodule MylibraryWeb.LanguageController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    language = Languages.get_language!(id)
-    render(conn, "show.html", language: language)
-  end
-
   def edit(conn, %{"id" => id}) do
     language = Languages.get_language!(id)
     changeset = Languages.change_language(language)

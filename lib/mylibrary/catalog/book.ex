@@ -39,6 +39,7 @@ defmodule Mylibrary.Catalog.Book do
     |> validate_year_edition()
   end
 
+  @doc false
   defp validate_isbn(changeset) do
     format_message = "digits only and with these formats: [ xxx-x-xxxxx-xxx-x (17) | x-xxxxx-xxx-x (13) | xxxxxxxxxx (10) | xxxxxxxxxxxxx (13) ]"
 
@@ -50,6 +51,7 @@ defmodule Mylibrary.Catalog.Book do
     |> unique_constraint(:isbn)
   end
 
+  @doc false
   defp validate_year_edition(changeset) do
     datetime = DateTime.now!("Etc/UTC")
     year = datetime.year

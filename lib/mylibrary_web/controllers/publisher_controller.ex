@@ -26,11 +26,6 @@ defmodule MylibraryWeb.PublisherController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    publisher = Publishers.get_publisher!(id)
-    render(conn, "show.html", publisher: publisher)
-  end
-
   def edit(conn, %{"id" => id}) do
     publisher = Publishers.get_publisher!(id)
     changeset = Publishers.change_publisher(publisher)

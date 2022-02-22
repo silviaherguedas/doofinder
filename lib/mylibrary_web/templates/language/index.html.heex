@@ -29,11 +29,6 @@
                 <td>
                     <ul class="btn-group gap-2 action-list">
                         <li class="action-list-item">
-                            <%= link to: Routes.language_path(@conn, :show, language), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
-                                <i class="bi bi-eye" aria-hidden="true"/>
-                            <% end %>
-                        </li>
-                        <li class="action-list-item">
                             <%= link to: Routes.language_path(@conn, :edit, language), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
                                 <i class="bi bi-pencil-fill" aria-hidden="true"/>
                             <% end %>

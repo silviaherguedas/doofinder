@@ -1,63 +1,37 @@
-<section class="text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Listing Books</h1>
-            <p class="lead text-muted">Here are the available books</p>
-            <%= link to: Routes.book_path(@conn, :new), class: "btn btn-success" do %>
-              <i class="bi bi-plus" aria-hidden="true"/>New Book
-            <% end %>
+<section class="row py-4">
+    <div class="d-flex flex-column align-items-center">
+        <h1 class="fw-light mb-3">Listing Books</h1>
+        <%= link to: Routes.book_path(@conn, :new), class: "btn btn-success" do %>
+            <i class="bi bi-plus" aria-hidden="true"/>New Book
+        <% end %>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
+        <%= for book <- @books do %>
+        <div class="col">
+            <div class="card shadow-sm">
+                <figure class="d-flex justify-content-center pt-2">
+                    <img class="card-image" alt="book-image" src={Routes.static_path(@conn, "/images/book.png")} />
+                </figure>
+                <div class="card-body pt-0">
+                    <p class="card-text text-center"><%= book.title %></p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="btn-group gap-2">
+                            <%= link to: Routes.book_path(@conn, :show, book), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
+                                <i class="bi bi-eye" aria-hidden="true"/>
+                            <% end %>
+                            <%= link to: Routes.book_path(@conn, :edit, book), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
+                                <i class="bi bi-pencil-fill" aria-hidden="true"/>
+                            <% end %>
+                            <%= link to: Routes.book_path(@conn, :delete, book), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
+                                <i class="bi bi-trash-fill" aria-hidden="true"/>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <% end %>
     </div>
 </section>
-
-<div class="container">
-<table class="table table-striped table-hover text-center">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Isbn</th>
-      <th scope="col">Binding</th>
-      <th scope="col">Format</th>
-      <th scope="col">Year edition</th>
-      <th scope="col">Date publication</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for book <- @books do %>
-    <tr>
-      <td><%= book.title %></td>
-      <td><%= book.isbn %></td>
-      <td><%= book.binding %></td>
-      <td><%= book.format %></td>
-      <td><%= book.year_edition %></td>
-      <td><%= book.date_publication %></td>
-        <td>
-            <ul class="btn-group gap-2 action-list">
-                <li class="action-list-item">
-                    <%= link to: Routes.book_path(@conn, :show, book), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
-                    <i class="bi bi-eye" aria-hidden="true"/>
-                    <% end %>
-                </li>
-                <li class="action-list-item">
-                    <%= link to: Routes.book_path(@conn, :edit, book), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
-                    <i class="bi bi-pencil-fill" aria-hidden="true"/>
-                    <%end %>
-                </li>
-                <li class="action-list-item">
-                    <%= link to: Routes.book_path(@conn, :delete, book), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
-                    <i class="bi bi-trash-fill" aria-hidden="true"/>
-                    <% end %>
-                </li>
-            </ul>
-        </td>
-
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-</div>
-
-
 

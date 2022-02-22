@@ -18,7 +18,9 @@
   display: block;
 }
 
-
+.navbar {
+  z-index: 2;
+}
 
 header {
   height: var(--header-height)

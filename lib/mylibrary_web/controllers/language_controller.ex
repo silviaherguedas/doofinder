@@ -19,7 +19,7 @@ defmodule MylibraryWeb.LanguageController do
       {:ok, language} ->
         conn
         |> put_flash(:info, "Language created successfully.")
-        |> redirect(to: Routes.language_path(conn, :show, language))
+        |> redirect(to: Routes.language_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -39,7 +39,7 @@ defmodule MylibraryWeb.LanguageController do
       {:ok, language} ->
         conn
         |> put_flash(:info, "Language updated successfully.")
-        |> redirect(to: Routes.language_path(conn, :show, language))
+        |> redirect(to: Routes.language_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", language: language, changeset: changeset)

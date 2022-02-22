@@ -1,41 +1,35 @@
-<section class="text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Listing Authors</h1>
-            <p class="lead text-muted">Here are the available authors</p>
-            <%= link to: Routes.author_path(@conn, :new), class: "btn btn-success" do %>
-                <i class="bi bi-plus" aria-hidden="true"/> New Author
-            <% end %>
-        </div>
+<section class="row py-4">
+    <div class="d-flex flex-column align-items-center">
+        <h1 class="fw-light mb-3">Listing Authors</h1>
+        <%= link to: Routes.author_path(@conn, :new), class: "btn btn-success" do %>
+            <i class="bi bi-plus" aria-hidden="true"/>New Author
+        <% end %>
     </div>
-</section>
-
-<section class="container">
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
-    <%= for author <- @authors do %>
-    <div class="col">
-        <div class="card shadow-sm">
-            <figure class="d-flex justify-content-center pt-2">
-                <img class="author-image" alt="author-image" src={Routes.static_path(@conn, "/images/author.png")} />
-            </figure>
-            <div class="card-body pt-0">
-                <p class="card-text text-center"><%= author.name %></p>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="btn-group gap-2">
-                        <%= link to: Routes.author_path(@conn, :show, author), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
-                          <i class="bi bi-eye" aria-hidden="true"/>
-                        <% end %>
-                        <%= link to: Routes.author_path(@conn, :edit, author), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
-                        <i class="bi bi-pencil-fill" aria-hidden="true"/>
-                        <% end %>
-                        <%= link to: Routes.author_path(@conn, :delete, author), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
-                        <i class="bi bi-trash-fill" aria-hidden="true"/>
-                        <% end %>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
+        <%= for author <- @authors do %>
+        <div class="col">
+            <div class="card shadow-sm">
+                <figure class="d-flex justify-content-center pt-2">
+                    <img class="card-image" alt="author-image" src={Routes.static_path(@conn, "/images/author.png")} />
+                </figure>
+                <div class="card-body pt-0">
+                    <p class="card-text text-center"><%= author.name %></p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="btn-group gap-2">
+                            <%= link to: Routes.author_path(@conn, :show, author), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
+                              <i class="bi bi-eye" aria-hidden="true"/>
+                            <% end %>
+                            <%= link to: Routes.author_path(@conn, :edit, author), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
+                                <i class="bi bi-pencil-fill" aria-hidden="true"/>
+                            <% end %>
+                            <%= link to: Routes.author_path(@conn, :delete, author), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
+                                <i class="bi bi-trash-fill" aria-hidden="true"/>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <% end %>
     </div>
-    <% end %>
-</div>
 </section>

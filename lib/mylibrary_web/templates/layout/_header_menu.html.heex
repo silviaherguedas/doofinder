@@ -10,25 +10,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar">
             <%= if @current_user do %>
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <%= link "Books", to: Routes.book_path(@conn, :index), class: "nav-link"%>
-                </li>
-                <li class="nav-item">
-                  <%= link "Categories", to: Routes.category_path(@conn, :index), class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link "Authors", to: Routes.author_path(@conn, :index), class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <%= link "Publishers", to: Routes.publisher_path(@conn, :index), class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <%= link "Languages", to: Routes.language_path(@conn, :index), class: "nav-link" %>
-                </li>
-              </ul>
-              <%= render "_logged_user_menu.html", assigns %>
-              <%= else %>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <%= link "Books", to: Routes.book_path(@conn, :index), class: "nav-link"%>
+                  </li>
+                  <li class="nav-item">
+                    <%= link "Categories", to: Routes.category_path(@conn, :index), class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link "Authors", to: Routes.author_path(@conn, :index), class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link "Publishers", to: Routes.publisher_path(@conn, :index), class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link "Languages", to: Routes.language_path(@conn, :index), class: "nav-link" %>
+                  </li>
+                </ul>
+                <%= render "_logged_user_menu.html", assigns %>
+              <% else %>
                 <%= render "_user_menu.html", assigns %>
               <% end %>
             </div>

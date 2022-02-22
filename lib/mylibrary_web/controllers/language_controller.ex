@@ -16,7 +16,7 @@ defmodule MylibraryWeb.LanguageController do
 
   def create(conn, %{"language" => language_params}) do
     case Languages.create_language(language_params) do
-      {:ok, language} ->
+      {:ok, _language} ->
         conn
         |> put_flash(:info, "Language created successfully.")
         |> redirect(to: Routes.language_path(conn, :index))
@@ -36,7 +36,7 @@ defmodule MylibraryWeb.LanguageController do
     language = Languages.get_language!(id)
 
     case Languages.update_language(language, language_params) do
-      {:ok, language} ->
+      {:ok, _language} ->
         conn
         |> put_flash(:info, "Language updated successfully.")
         |> redirect(to: Routes.language_path(conn, :index))

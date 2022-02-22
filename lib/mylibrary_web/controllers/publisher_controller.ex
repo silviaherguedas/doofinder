@@ -16,10 +16,10 @@ defmodule MylibraryWeb.PublisherController do
 
   def create(conn, %{"publisher" => publisher_params}) do
     case Publishers.create_publisher(publisher_params) do
-      {:ok, publisher} ->
+      {:ok, _publisher} ->
         conn
         |> put_flash(:info, "Publisher created successfully.")
-        |> redirect(to: Routes.publisher_path(conn, :show, publisher))
+        |> redirect(to: Routes.publisher_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -36,10 +36,10 @@ defmodule MylibraryWeb.PublisherController do
     publisher = Publishers.get_publisher!(id)
 
     case Publishers.update_publisher(publisher, publisher_params) do
-      {:ok, publisher} ->
+      {:ok, _publisher} ->
         conn
         |> put_flash(:info, "Publisher updated successfully.")
-        |> redirect(to: Routes.publisher_path(conn, :show, publisher))
+        |> redirect(to: Routes.publisher_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", publisher: publisher, changeset: changeset)

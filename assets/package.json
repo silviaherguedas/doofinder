@@ -7,8 +7,5 @@
         "type": "git",
         "url": "git+ssh://git@github.com:silviaherguedas/doofinder.git"
     },
-    "main": "app.js",
-    "dependencies": {
-        "bootstrap": "^5.1.3"
-    }
+    "main": "app.js"
 }

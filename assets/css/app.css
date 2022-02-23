@@ -1,6 +1,5 @@
 /* This file is for your main application CSS */
 @import "./phoenix.css";
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 * {
     font-family: "Roboto", serif, Helvetica;

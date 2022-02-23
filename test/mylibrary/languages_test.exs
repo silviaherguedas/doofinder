@@ -21,12 +21,12 @@ defmodule Mylibrary.LanguagesTest do
     end
 
     test "create_language/1 with valid data creates a language" do
-      valid_attrs = %{iso1: "some iso1", iso2: "some iso2", name: "some name"}
+      valid_attrs = %{iso1: "es", iso2: "esp", name: "Castellano"}
 
       assert {:ok, %Language{} = language} = Languages.create_language(valid_attrs)
-      assert language.iso1 == "some iso1"
-      assert language.iso2 == "some iso2"
-      assert language.name == "some name"
+      assert language.iso1 == "es"
+      assert language.iso2 == "esp"
+      assert language.name == "Castellano"
     end
 
     test "create_language/1 with invalid data returns error changeset" do
@@ -35,12 +35,12 @@ defmodule Mylibrary.LanguagesTest do
 
     test "update_language/2 with valid data updates the language" do
       language = language_fixture()
-      update_attrs = %{iso1: "some updated iso1", iso2: "some updated iso2", name: "some updated name"}
+      update_attrs = %{iso1: "en", iso2: "eng", name: "Inglés"}
 
       assert {:ok, %Language{} = language} = Languages.update_language(language, update_attrs)
-      assert language.iso1 == "some updated iso1"
-      assert language.iso2 == "some updated iso2"
-      assert language.name == "some updated name"
+      assert language.iso1 == "en"
+      assert language.iso2 == "eng"
+      assert language.name == "Inglés"
     end
 
     test "update_language/2 with invalid data returns error changeset" do

@@ -1,5 +1,8 @@
-<h1>Edit Language</h1>
-
-<%= render "form.html", Map.put(assigns, :action, Routes.language_path(@conn, :update, @language)) %>
-
-<span><%= link "Back", to: Routes.language_path(@conn, :index) %></span>
+<section class="row py-4">
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="fw-light mb-3">Edit Language</h1>
+  </div>
+  <div class="col-lg-6 col-12 mx-lg-auto my-4">
+    <%= render "form.html", Map.put(assigns, :action, Routes.language_path(@conn, :update, @language)) %>
+  </div>
+</section>

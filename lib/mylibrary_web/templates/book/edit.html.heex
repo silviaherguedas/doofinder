@@ -1,11 +1,8 @@
 <section class="row py-4">
-    <div class="d-flex flex-column align-items-center">
-        <h1 class="fw-light mb-3">Edit Book</h1>
-        <%= link to: Routes.book_path(@conn, :index), class: "btn btn-outline-primary"  do %>
-            <i class="bi bi-arrow-left"/> Back
-        <% end %>
-    </div>
-    <div class="col-lg-6 col-12 mx-lg-auto my-4">
-        <%= render "form.html", Map.put(assigns, :action, Routes.book_path(@conn, :update, @book)) %>
-    </div>
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="fw-light mb-3">Edit Book</h1>
+  </div>
+  <div class="col-lg-6 col-12 mx-lg-auto my-4">
+    <%= render "form.html", Map.put(assigns, :action, Routes.book_path(@conn, :update, @book)) %>
+  </div>
 </section>

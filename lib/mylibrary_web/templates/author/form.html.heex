@@ -13,5 +13,14 @@
   <%= textarea f, :biography, class: "form-control" %>
   <%= error_tag f, :biography %>
 
-<%= submit "Save", class: "btn btn-success btn-summit" %>
+  <div class="row justify-content-between mt-3">
+    <div class="col-6">
+      <%= submit "Save", class: "btn btn-success btn-summit" %>
+    </div>
+    <div class="col-6 text-end">
+      <%= link to: Routes.author_path(@conn, :index), class: "btn btn-outline-primary"  do %>
+          <i class="bi bi-arrow-left"/> Back
+      <% end %>
+    </div>
+  </div>
 </.form>

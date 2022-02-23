@@ -11,9 +11,9 @@ defmodule Mylibrary.LanguagesFixtures do
     {:ok, language} =
       attrs
       |> Enum.into(%{
-        iso1: "some iso1",
-        iso2: "some iso2",
-        name: "some name"
+        iso1: "es",
+        iso2: "esp",
+        name: "Castellano"
       })
       |> Mylibrary.Languages.create_language()
 

@@ -1,9 +1,6 @@
 <section class="py-4 px-4">
     <div class="d-flex flex-column align-items-center">
-        <h1 class="fw-light mb-4">Edit Book</h1>
-        <%= link to: Routes.book_path(@conn, :index), class: "btn btn-outline-primary"  do %>
-            <i class="bi bi-arrow-left"/> Back
-        <% end %>
+        <h1 class="fw-light mb-4"><%= @book.title %></h1>
     </div>
     <div class="col-lg-6 col-12 mx-lg-auto my-4">
         <div class="card shadow-sm">
@@ -11,64 +8,65 @@
                 <img class="book-image" alt="book-image" src={Routes.static_path(@conn, "/images/book.png")} />
             </figure>
             <div class="card-body pt-0">
-                <p class="card-text text-center"><%= @book.title %></p>
                 <div class="d-flex justify-content-center align-items-center">
-                    <div class="btn-group gap-2">
-                        <%= link to: Routes.book_path(@conn, :show, @book), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
-                            <i class="bi bi-eye" aria-hidden="true"/>
-                        <% end %>
-                        <%= link to: Routes.book_path(@conn, :edit, @book), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
-                            <i class="bi bi-pencil-fill" aria-hidden="true"/>
-                        <% end %>
-                        <%= link to: Routes.book_path(@conn, :delete, @book), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
-                            <i class="bi bi-trash-fill" aria-hidden="true"/>
-                        <% end %>
-                    </div>
+                  <div class="btn-group gap-2">
+                    <%= link to: Routes.book_path(@conn, :index), class: "btn btn-sm rounded-circle btn-outline-primary"  do %>
+                      <i class="bi bi-arrow-left"/>
+                    <% end %>
+                    <%= link to: Routes.book_path(@conn, :edit, @book), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
+                      <i class="bi bi-pencil-fill" aria-hidden="true"/>
+                    <% end %>
+                    <%= link to: Routes.book_path(@conn, :delete, @book), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
+                      <i class="bi bi-trash-fill" aria-hidden="true"/>
+                    <% end %>
+                  </div>
                 </div>
-                <ul class="list-group mt-4">
-                    <li class="list-group-item">
-                        <span>Isbn:</span>
-                        <%= @book.isbn %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Categories:</span>
-                        <%= for cat <- @book.categories do %>
-                        <span><%= cat.title %></span>
-                        <% end %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Author:</span>
-                        <%= @book.author.name %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Publisher:</span>
-                        <%= @book.publisher.name %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Language:</span>
-                        <%= @book.language.name %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Summary:</span>
-                        <%= @book.summary %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Binding:</span>
-                        <%= @book.binding %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Format:</span>
-                        <%= @book.format %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Year edition:</span>
-                        <%= @book.year_edition %>
-                    </li>
-                    <li class="list-group-item">
-                        <span>Date publication:</span>
-                        <%= @book.date_publication %>
-                    </li>
-                </ul>
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="col">Isbn</th>
+                      <td><%= @book.isbn %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Categories</th>
+                      <td><ul><%= for cat <- @book.categories do %>
+                        <li><%= cat.title %></li>
+                      <% end %></ul></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Author</th>
+                      <td><%= @book.author.name %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Publisher</th>
+                      <td><%= @book.publisher.name %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Language</th>
+                      <td><%= @book.language.name %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Summary</th>
+                      <td><%= @book.summary %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Binding</th>
+                      <td><%= @book.binding %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Format</th>
+                      <td><%= @book.format %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Year edition</th>
+                      <td><%= @book.year_edition %></td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Date publication</th>
+                      <td><%= @book.date_publication %></td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>

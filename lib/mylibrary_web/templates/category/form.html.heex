@@ -6,10 +6,17 @@
   <% end %>
 
   <%= label f, :title, class: "form-label" %>
-  <%= text_input f, :title, class: "form-control w-auto" %>
+  <%= text_input f, :title, class: "form-control" %>
   <%= error_tag f, :title %>
 
-<div class="mt-3">
-<%= submit "Save", class: "btn btn-success" %>
-</div>
+  <div class="row justify-content-between mt-3">
+    <div class="col-6">
+      <%= submit "Save", class: "btn btn-success btn-summit" %>
+    </div>
+    <div class="col-6 text-end">
+      <%= link to: Routes.category_path(@conn, :index), class: "btn btn-outline-primary"  do %>
+          <i class="bi bi-arrow-left"/> Back
+      <% end %>
+    </div>
+  </div>
 </.form>

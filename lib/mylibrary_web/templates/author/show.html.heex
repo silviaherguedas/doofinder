@@ -1,9 +1,6 @@
 <section class="py-4 px-4">
     <div class="d-flex flex-column align-items-center">
-        <h1 class="fw-light mb-4">Edit Author</h1>
-        <%= link to: Routes.author_path(@conn, :index), class: "btn btn-outline-primary"  do %>
-            <i class="bi bi-arrow-left"/> Back
-        <% end %>
+        <h1 class="fw-light mb-4"><%= @author.name %></h1>
     </div>
     <div class="col-lg-6 col-12 mx-lg-auto my-4">
         <div class="card shadow-sm">
@@ -11,11 +8,10 @@
                 <img class="author-image" alt="author-image" src={Routes.static_path(@conn, "/images/author.png")} />
             </figure>
             <div class="card-body pt-0">
-                <p class="card-text text-center"><%= @author.name %></p>
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="btn-group gap-2">
-                        <%= link to: Routes.author_path(@conn, :show, @author), class: "btn btn-sm btn-outline-primary rounded-circle" do %>
-                            <i class="bi bi-eye" aria-hidden="true"/>
+                        <%= link to: Routes.book_path(@conn, :index), class: "btn btn-sm rounded-circle btn-outline-primary"  do %>
+                          <i class="bi bi-arrow-left"/>
                         <% end %>
                         <%= link to: Routes.author_path(@conn, :edit, @author), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
                             <i class="bi bi-pencil-fill" aria-hidden="true"/>
@@ -25,8 +21,7 @@
                         <% end %>
                     </div>
                 </div>
-                <h4 class="fw-bold text-center py-4">Biography</h4>
-                <%= @author.biography %>
+                <p class="card-text mt-3"><%= @author.biography %></p>
             </div>
         </div>
     </div>

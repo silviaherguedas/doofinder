@@ -1,43 +1,40 @@
-<section class="text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Listing Publisher</h1>
-            <p class="lead text-muted">Here are the available publishers</p>
-            <%= link to: Routes.publisher_path(@conn, :new), class: "btn btn-success" do %>
-              <i class="bi bi-plus" aria-hidden="true"/>New publisher
-            <% end %>
-        </div>
-    </div>
-</section>
+<section class="row py-4">
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="fw-light mb-3">Listing Publisher</h1>
+    <%= link to: Routes.publisher_path(@conn, :new), class: "btn btn-success" do %>
+      <i class="bi bi-plus" aria-hidden="true"/>New publisher
+    <% end %>
+  </div>
 
-<div class="container">
-<table class="table table-striped table-hover text-center">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  <%= for publisher <- @publishers do %>
-    <tr>
-      <td><%= publisher.name %></td>
-        <td>
-            <ul class="btn-group gap-2 action-list">
-                <li class="action-list-item">
-                    <%= link to: Routes.publisher_path(@conn, :edit, publisher), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
-                    <i class="bi bi-pencil-fill" aria-hidden="true"/>
-                    <%end %>
-                </li>
-                <li class="action-list-item">
-                    <%= link to: Routes.publisher_path(@conn, :delete, publisher), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
-                    <i class="bi bi-trash-fill" aria-hidden="true"/>
-                    <% end %>
-                </li>
-            </ul>
-        </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-</div>
+  <div class="container mt-3">
+    <table class="table table-striped table-hover text-center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for publisher <- @publishers do %>
+          <tr>
+            <td><%= publisher.name %></td>
+              <td>
+                  <ul class="btn-group gap-2 action-list">
+                      <li class="action-list-item">
+                          <%= link to: Routes.publisher_path(@conn, :edit, publisher), class: "btn btn-sm btn-outline-warning rounded-circle" do %>
+                          <i class="bi bi-pencil-fill" aria-hidden="true"/>
+                          <%end %>
+                      </li>
+                      <li class="action-list-item">
+                          <%= link to: Routes.publisher_path(@conn, :delete, publisher), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-outline-danger rounded-circle" do %>
+                          <i class="bi bi-trash-fill" aria-hidden="true"/>
+                          <% end %>
+                      </li>
+                  </ul>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

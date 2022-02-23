@@ -1,11 +1,8 @@
-<section class="container-fluid px-0">
-    <div class="row py-lg-5 text-center ">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">New Publisher</h1>
-        </div>
-    </div>
-    <%= link to: Routes.publisher_path(@conn, :index), class: "btn btn-outline-primary mb-4 text-left"  do %>
-    <i class="bi bi-arrow-left"/> Back
-    <% end %>
+<section class="row py-4">
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="fw-light mb-4">New Publisher</h1>
+  </div>
+  <div class="col-lg-6 col-12 mx-lg-auto my-4">
+    <%= render "form.html", Map.put(assigns, :action, Routes.publisher_path(@conn, :create)) %>
+  </div>
 </section>
-<%= render "form.html", Map.put(assigns, :action, Routes.publisher_path(@conn, :create)) %>

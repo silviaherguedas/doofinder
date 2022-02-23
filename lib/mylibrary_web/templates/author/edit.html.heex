@@ -1,9 +1,6 @@
 <section class="row py-4">
     <div class="d-flex flex-column align-items-center">
         <h1 class="fw-light mb-4">Edit Author</h1>
-        <%= link to: Routes.author_path(@conn, :index), class: "btn btn-outline-primary"  do %>
-            <i class="bi bi-arrow-left"/> Back
-        <% end %>
     </div>
     <div class="col-lg-6 col-12 mx-lg-auto my-4">
         <%= render "form.html", Map.put(assigns, :action, Routes.author_path(@conn, :update, @author)) %>

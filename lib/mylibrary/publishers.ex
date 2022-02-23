@@ -35,11 +35,7 @@ defmodule Mylibrary.Publishers do
       ** (Ecto.NoResultsError)
 
   """
-  def get_publisher!(id) do
-    Publisher
-    |> Repo.get!(id)
-    |> Repo.preload(:books)
-  end
+  def get_publisher!(id), do: Repo.get!(Publisher, id)
 
   @doc """
   Creates a publisher.

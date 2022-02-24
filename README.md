@@ -11,11 +11,11 @@ with [Phoenix](http://phoenixframework.org) web framework using and
 ### To start the container and bring up Phoenix server
 
 1. Create the .env file. To do this, rename the file .env.dist
-2. Change the docker launch locations, if necessary (docker-file.ylm and .env).
+2. If necessary, change the docker output ports. You are using "4020:4020" for Phoenix Server and "5434:5432" for Postgres (check these files: docker-file.yml and .env).
 3. Follow these steps:
 
 ```bash
-# a. To build the container the first time and install all the dependencies,
+# a. To build the container and install all the dependencies,
 # create the database and run the migrations with the real data load,
 # we must launch this script:
 ./docker_up.sh
@@ -28,18 +28,11 @@ chown -R 1000:1000 _build/
 chown -R 1000:1000 deps/
 
 # b.2. Install Npm dependencies
-mix do setup, phx.digest
+mix do deps.compile, phx.digest
 ```
 
 4. Now, you can visit [`localhost:4020`](http://localhost:4020) from your browser.
 5. To access the tool, you need to register on the platform.
-
-The subsequent times, it would be enough to launch only this command
-in the root folder:
-
-```bash
-docker-compose up
-```
 
 ## Other Uses
 

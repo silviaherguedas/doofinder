@@ -4,24 +4,48 @@ defmodule Mylibrary.CatalogFixtures do
   entities via the `Mylibrary.Catalog` context.
   """
 
+  import Mylibrary.AuthorsFixtures
+  import Mylibrary.PublishersFixtures
+  import Mylibrary.LanguagesFixtures
+
+  @doc """
+  Generate a unique language iso2.
+  """
+  def unique_book_isbn, do: String.slice("#{System.unique_integer([:positive])}", 0..9)
+
   @doc """
   Generate a book.
   """
-  def book_fixture(attrs \\ %{}) do
+  def book_fixture(attrs \\ %{}, preload \\ []) do
+    require Mylibrary.UtilFixture
+
+    assoc_author = %{author: author_fixture()}
+    assoc_publisher = %{publisher: publisher_fixture()}
+    assoc_language = %{language: language_fixture()}
+    assoc_categories = category_fixture()
+
     {:ok, book} =
       attrs
       |> Enum.into(%{
         binding: :rustica,
         date_publication: ~D[2022-02-12],
         format: :tapa_dura,
-        isbn: "some isbn",
+        isbn: "1257561035",
         summary: "some summary",
         title: "some title",
-        year_edition: 42
+        year_edition: 2021,
+        author_id: assoc_author.author.id,
+        publisher_id: assoc_publisher.publisher.id,
+        language_id: assoc_language.language.id,
+        categories: assoc_categories
       })
       |> Mylibrary.Catalog.create_book()
 
-    book
+      book
+      |> Mylibrary.UtilFixture.merge_preload(preload, assoc_author)
+      |> Mylibrary.UtilFixture.merge_preload(preload, assoc_publisher)
+      |> Mylibrary.UtilFixture.merge_preload(preload, assoc_language)
+      |> Mylibrary.UtilFixture.merge_preload(preload, assoc_categories)
   end
 
   @doc """

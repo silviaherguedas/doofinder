@@ -125,7 +125,7 @@ defmodule Mylibrary.Catalog do
       %Ecto.Changeset{}
 
   """
-  defp assign_mandatory_relations(book) do
+  def assign_mandatory_relations(book) do
     book
     |> Ecto.Changeset.cast_assoc(:categories, required: true)
     |> Ecto.Changeset.cast_assoc(:author, required: true)
@@ -142,8 +142,8 @@ defmodule Mylibrary.Catalog do
       [%Category{}, ...]
 
   """
-  defp list_categories_by_id(nil), do: []
-  defp list_categories_by_id(category_ids) do
+  def list_categories_by_id(nil), do: []
+  def list_categories_by_id(category_ids) do
     Repo.all(from c in Category, where: c.id in ^category_ids)
   end
 
@@ -156,8 +156,8 @@ defmodule Mylibrary.Catalog do
       %Author{}
 
   """
-  defp author_by_id(nil), do: []
-  defp author_by_id(id) do
+  def author_by_id(nil), do: []
+  def author_by_id(id) do
     if id != "" do
       Authors.get_author!(id)
     end
@@ -172,8 +172,8 @@ defmodule Mylibrary.Catalog do
       %Publisher{}
 
   """
-  defp publisher_by_id(nil), do: []
-  defp publisher_by_id(id) do
+  def publisher_by_id(nil), do: []
+  def publisher_by_id(id) do
     if id != "" do
       Publishers.get_publisher!(id)
     end
@@ -188,8 +188,8 @@ defmodule Mylibrary.Catalog do
       %Language{}
 
   """
-  defp language_by_id(nil), do: []
-  defp language_by_id(id) do
+  def language_by_id(nil), do: []
+  def language_by_id(id) do
     if id != "" do
       Languages.get_language!(id)
     end

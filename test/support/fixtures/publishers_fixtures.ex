@@ -5,13 +5,18 @@ defmodule Mylibrary.PublishersFixtures do
   """
 
   @doc """
+  Generate a unique publisher name.
+  """
+  def unique_publisher_name, do: "some title#{System.unique_integer([:positive])}"
+
+  @doc """
   Generate a publisher.
   """
   def publisher_fixture(attrs \\ %{}) do
     {:ok, publisher} =
       attrs
       |> Enum.into(%{
-        name: "some name"
+        name: unique_publisher_name()
       })
       |> Mylibrary.Publishers.create_publisher()
 
